@@ -25,12 +25,12 @@ MY_DIR := $(dir $(lastword $(MAKEFILE_LIST)))
 include $(BOLOS_SDK)/Makefile.defines
 
 # Main app configuration
-APPNAME = "Cosmos"
-APPVERSION_M=2
-APPVERSION_N=18
+APPNAME = "BitSong"
+APPVERSION_M=1
+APPVERSION_N=0
 APPVERSION_P=0
 
-APPPATH = "44'/118'"
+APPPATH = "44'/639'"
 APP_LOAD_PARAMS = --appFlags 0x200 --delete $(COMMON_LOAD_PARAMS) --path $(APPPATH)
 
 ifeq ($(TARGET_NAME),TARGET_NANOS)
@@ -112,7 +112,7 @@ DEFINES   += LEDGER_SPECIFIC
 ifneq ($(BOLOS_ENV),)
 $(info BOLOS_ENV is $(BOLOS_ENV))
 CLANGPATH := $(BOLOS_ENV)/clang-arm-fropi/bin/
-GCCPATH := $(BOLOS_ENV)/gcc-arm-none-eabi-5_3-2016q1/bin/
+GCCPATH := $(BOLOS_ENV)/gcc-arm-none-eabi-10-2020-q4-major/bin/
 else
 $(info BOLOS_ENV is not set: falling back to CLANGPATH and GCCPATH)
 endif
@@ -174,4 +174,4 @@ delete:
 	python -m ledgerblue.deleteApp $(COMMON_DELETE_PARAMS)
 
 listvariants:
-	@echo VARIANTS COIN cosmos
+	@echo VARIANTS COIN bitsong

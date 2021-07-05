@@ -14,7 +14,7 @@
  *  limitations under the License.
  ******************************************************************************* */
 
-import jest, {expect} from "jest";
+import jest, { expect } from "jest";
 import Zemu from "@zondax/zemu";
 import CosmosApp from "ledger-cosmos-js";
 import secp256k1 from "secp256k1/elliptic";
@@ -204,8 +204,8 @@ describe('Basic checks', function () {
             await sim.start(sim_options);
             const app = new CosmosApp(sim.getTransport());
             // Derivation path. First 3 items are automatically hardened!
-            const path = [44, 118, 5, 0, 3];
-            const resp = await app.getAddressAndPubKey(path, "cosmos");
+            const path = [44, 639, 5, 0, 3];
+            const resp = await app.getAddressAndPubKey(path, "bitsong");
 
             console.log(resp);
 
@@ -229,8 +229,8 @@ describe('Basic checks', function () {
             const app = new CosmosApp(sim.getTransport());
 
             // Derivation path. First 3 items are automatically hardened!
-            const path = [44, 118, 5, 0, 3];
-            const respRequest = app.showAddressAndPubKey(path, "cosmos");
+            const path = [44, 639, 5, 0, 3];
+            const respRequest = app.showAddressAndPubKey(path, "bitsong");
             // Wait until we are not in the main menu
             await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot());
 
@@ -260,8 +260,8 @@ describe('Basic checks', function () {
             const app = new CosmosApp(sim.getTransport());
 
             // Derivation path. First 3 items are automatically hardened!
-            const path = [44, 118, 2147483647, 0, 4294967295];
-            const resp = await app.showAddressAndPubKey(path, "cosmos");
+            const path = [44, 639, 2147483647, 0, 4294967295];
+            const resp = await app.showAddressAndPubKey(path, "bitsong");
             console.log(resp);
 
             expect(resp.return_code).toEqual(0x6985);
@@ -283,8 +283,8 @@ describe('Basic checks', function () {
             await sim.clickLeft();
 
             // Derivation path. First 3 items are automatically hardened!
-            const path = [44, 118, 2147483647, 0, 4294967295];
-            const respRequest = app.showAddressAndPubKey(path, "cosmos");
+            const path = [44, 639, 2147483647, 0, 4294967295];
+            const respRequest = app.showAddressAndPubKey(path, "bitsong");
 
             // Wait until we are not in the main menu
             await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot());
@@ -314,11 +314,11 @@ describe('Basic checks', function () {
             await sim.start(sim_options);
             const app = new CosmosApp(sim.getTransport());
 
-            const path = [44, 118, 0, 0, 0];
+            const path = [44, 639, 0, 0, 0];
             let tx = JSON.stringify(example_tx_str_basic);
 
             // get address / publickey
-            const respPk = await app.getAddressAndPubKey(path, "cosmos");
+            const respPk = await app.getAddressAndPubKey(path, "bitsong");
             expect(respPk.return_code).toEqual(0x9000);
             expect(respPk.error_message).toEqual("No errors");
             console.log(respPk)
@@ -365,11 +365,11 @@ describe('Basic checks', function () {
             await sim.start(sim_options);
             const app = new CosmosApp(sim.getTransport());
 
-            const path = [44, 118, 0, 0, 0];
+            const path = [44, 639, 0, 0, 0];
             let tx = JSON.stringify(example_tx_str_combined);
 
             // get address / publickey
-            const respPk = await app.getAddressAndPubKey(path, "cosmos");
+            const respPk = await app.getAddressAndPubKey(path, "bitsong");
             expect(respPk.return_code).toEqual(0x9000);
             expect(respPk.error_message).toEqual("No errors");
             console.log(respPk)
@@ -412,11 +412,11 @@ describe('Basic checks', function () {
             await sim.start(sim_options);
             const app = new CosmosApp(sim.getTransport());
 
-            const path = [44, 118, 0, 0, 0];
+            const path = [44, 639, 0, 0, 0];
             let tx = JSON.stringify(example_tx_str_basic);
 
             // get address / publickey
-            const respRequest = app.showAddressAndPubKey(path, "cosmos");
+            const respRequest = app.showAddressAndPubKey(path, "bitsong");
 
             // Wait until we are not in the main menu
             await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot());
@@ -469,11 +469,11 @@ describe('Basic checks', function () {
             await sim.start(sim_options);
             const app = new CosmosApp(sim.getTransport());
 
-            const path = [44, 118, 0, 0, 0];
+            const path = [44, 639, 0, 0, 0];
             let tx = JSON.stringify(example_tx_str_expert);
 
             // get address / publickey
-            const respPk = await app.getAddressAndPubKey(path, "cosmos");
+            const respPk = await app.getAddressAndPubKey(path, "bitsong");
             expect(respPk.return_code).toEqual(0x9000);
             expect(respPk.error_message).toEqual("No errors");
             console.log(respPk)
